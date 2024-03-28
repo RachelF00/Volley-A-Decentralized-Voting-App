@@ -4,7 +4,7 @@ const active = ref(0);
 </script>
 
 <template>
-  <div>
+  <div class="whole">
       <nav class="header">V o l l e y</nav>
       <main>
         <router-view></router-view>
@@ -24,7 +24,7 @@ const active = ref(0);
   color: white;
   text-align: center;
   line-height: 50px;
-  font-size: larger;
+  font-size: xx-large;
   font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 </style>
