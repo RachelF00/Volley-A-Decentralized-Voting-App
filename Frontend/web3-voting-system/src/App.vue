@@ -6,11 +6,13 @@ const active = ref(0);
 <template>
   <div>
       <nav class="header">V o l l e y</nav>
-      <main>voting</main>
-      <van-tabbar v-model="active">
-        <van-tabbar-item icon="user">My Account</van-tabbar-item>
-        <van-tabbar-item icon="good-job">Voting</van-tabbar-item>
-        <van-tabbar-item icon="notes">Board</van-tabbar-item>
+      <main>
+        <router-view></router-view>
+      </main>
+      <van-tabbar v-model="active" active-color="rgb(185, 225, 243)" route="true">
+        <van-tabbar-item to="/account" icon="user">My Account</van-tabbar-item>
+        <van-tabbar-item to="/" icon="good-job">Voting</van-tabbar-item>
+        <van-tabbar-item to="/board" icon="notes">Board</van-tabbar-item>
       </van-tabbar>
   </div>
 </template>
