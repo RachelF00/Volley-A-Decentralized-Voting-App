@@ -1,30 +1,37 @@
+<script setup>
+import { ref } from "vue";
+const active = ref(0);
+</script>
+
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+      <nav class="header">V o l l e y</nav>
+      <main>voting</main>
+      <van-tabbar v-model="active">
+        <van-tabbar-item icon="user">My Account</van-tabbar-item>
+        <van-tabbar-item icon="good-job">Voting</van-tabbar-item>
+        <van-tabbar-item icon="notes">Board</van-tabbar-item>
+      </van-tabbar>
+  </div>
 </template>
 
-<style lang="less">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style lang="less" scoped>
+.header {
+  height: 50px;
+  background-color: rgb(185, 225, 243);
+  color: white;
   text-align: center;
-  color: #2c3e50;
+  line-height: 50px;
+  font-size: larger;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+</style>
 
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+<style lang="less">
+html, 
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 </style>
