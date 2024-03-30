@@ -11,6 +11,7 @@ describe("Vote System", function () {
     let voteSystem = await ethers.getContractFactory("VoteSystem");
     voteSystem = await voteSystem.deploy(["SHIB", "DOGE", "RON"]);
     await voteSystem.waitForDeployment();
+    console.log("VoteSystem deployed to:", host);
     return {voteSystem, host, addr1, addr2, addr3, addr4};
   }
 

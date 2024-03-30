@@ -1,5 +1,9 @@
 <script setup>
-// import { ref } from "vue";
+  import useWeb3 from "../hooks/useweb3.js";
+  const {web3, voteContract, contractAddress} = useWeb3();
+  console.log(web3);
+  console.log(voteContract)
+  console.log("address is: ", contractAddress)
 </script>
 
 <template>
