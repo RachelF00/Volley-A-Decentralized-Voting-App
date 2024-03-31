@@ -9,7 +9,7 @@ async function main() {
 
     await voteSystem.waitForDeployment();
     
-    console.log("VoteSystem deployed to:", voteSystem.address);
+    console.log("VoteSystem deployed to:", voteSystem.target);
 }
 
 main()
