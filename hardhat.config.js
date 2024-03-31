@@ -13,9 +13,9 @@ module.exports = {
   //   }
   // }
   networks: {
-    goerli: {
-      url: `https://goerli.infura.io/v3/bacfcbcb951e4305867e3b18d3f5da3a`,
-      accounts: 
+    sepolia: {
+      url: `https://sepolia.infura.io/v3/bacfcbcb951e4305867e3b18d3f5da3a`,
+      accounts: [`2c02bc078bc2f0702f1bbbd1e32d56e3ad8fcc317bc83c1856e34f0528f437a8`]
     }
   }
 };
