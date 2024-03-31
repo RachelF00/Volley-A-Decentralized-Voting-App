@@ -15,11 +15,17 @@
   };
 
   //mandate
-  const mandate = async () => {
+  const mandating = async () => {
     // const addr = eval(votersAddress.value);
     const account = await getAccounts();
     console.log(account);
-    // voteContract.methods.mandate(addr).send({from: getAccount})
+    // voteContract.methods.mandate(addr).send({from: account}).on('receipt', () => {
+    //   console.log("mandate succeed");
+    // })
+
+    // await voteContract.connect(host).mandate(addr).on('receipt', () => {
+    //   console.log("mandating succeed");
+    // });
   }
 
   onMounted(async () => {
@@ -47,7 +53,7 @@
           <textarea class="voters" v-model="votersAddress"></textarea>
       </div>
       <div class="butn">
-        <van-button block class="vote-butn" @click="mandate">Start Vote</van-button>
+        <van-button block class="vote-butn" @click="mandating">Start Vote</van-button>
 
       </div>
   </div>
