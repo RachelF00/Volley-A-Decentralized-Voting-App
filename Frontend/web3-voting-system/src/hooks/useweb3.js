@@ -5,10 +5,16 @@ const useweb3 = () => {
     const contractAddress = "0xd30C9237499904726c936a2aCE58d1C942D6072E"
     const voteContract = new web3.eth.Contract(VoteSystemJson.abi, contractAddress);
 
+    const getAccounts = async() => {
+        const accounts = await web3.eth.requestAccounts();
+        return accounts[0];
+    };
+
     return {
         web3, 
         voteContract, 
         contractAddress,
+        getAccounts,
     }
 }
 
