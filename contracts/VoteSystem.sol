@@ -8,6 +8,7 @@ contract VoteSystem{
     struct Voter{
         uint256 weight; //vote number
         bool isVoted;
+        bool isMandated;
         address delegator;
         uint256 cryptoId; //cryptocurrency Id voter votes
     }
@@ -19,6 +20,7 @@ contract VoteSystem{
     }
 
     address public host;
+    bool public inFunction;
     mapping(address => Voter) public voters;
     Board[] public board;
     address[] public votedVoters;
@@ -41,18 +43,25 @@ contract VoteSystem{
     function mandate(address[] calldata addressList) public{
         //only host can use this method
         // require(msg.sender == host, "Only host can mandate the votes");
+        voters[addressList[0]].isMandated = true;
+        inFunction = true;
         for(uint256 i = 0; i < addressList.length; i++){
+            // voters[addressList[i]].isMandated = true;
             if(!voters[addressList[i]].isVoted){
                 voters[addressList[i]].weight = 1;
+                // voters[addressList[i]].isMandated = true;
                 console.log("Weight After Mandating: ", voters[addressList[i]].weight);
             }
         }
-        
     }
 
     
     function getVoterWeight(address voter) public view returns(uint256 weight){
         return voters[voter].weight;
+    }
+
+    function getVoterFlag(address voter) public view returns(bool isMandated){
+        return voters[voter].isMandated;
     }
 
     function vote(uint256 cryptoId) public{

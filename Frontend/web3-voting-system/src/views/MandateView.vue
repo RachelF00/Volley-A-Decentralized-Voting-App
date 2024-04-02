@@ -21,10 +21,14 @@
     console.log("address are: " ,typeof(addr));
     const account = await getAccounts();
     console.log(account)
-    console.log("addr[0] is",addr[0]);
-    // console.log("weight before: ", voteContract.methods.getVoterWeight(addr[0]));
+    // console.log("addr[0] is",addr[0]);
+    // //const before = await voteContract.methods.getVoterFlag(addr[0]).call();
+    // const before = await voteContract.methods.inFunction().call();
+    // console.log("weight before: ", before);
     voteContract.methods.mandate(addr); 
-    // console.log("weight after: ", voteContract.methods.getVoterWeight(addr[0]));
+    // //const after = await voteContract.methods.getVoterFlag(addr[0]).call();
+    // const after = await voteContract.methods.inFunction().call();
+    // console.log("weight after: ", after);
   }
 
   onMounted(async () => {

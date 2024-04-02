@@ -3,7 +3,7 @@ import VoteSystemJson from "../contracts/VoteSystem.json";
 const useweb3 = () => {
     
     const web3 = new Web3(Web3.givenProvider || "https://sepolia.infura.io/v3/bacfcbcb951e4305867e3b18d3f5da3a");
-    const contractAddress = "0x62Fd4c961d0230ceF2c8B4969e5C5910750A7031"
+    const contractAddress = "0x460Dabef9D03e465c9289726a6271Ee36bf35634"
     const voteContract = new web3.eth.Contract(VoteSystemJson.abi, contractAddress);
 
     // const getAccounts = async () => {
@@ -11,6 +11,7 @@ const useweb3 = () => {
     //     console.log("account is: ",accounts)
     //     return accounts[0];
     // };
+
 
     async function getAccounts() {
         if (window.ethereum) {
@@ -25,6 +26,8 @@ const useweb3 = () => {
             console.log("Ethereum provider not found. Install MetaMask!");
         }
     }
+
+    
 
     
 
