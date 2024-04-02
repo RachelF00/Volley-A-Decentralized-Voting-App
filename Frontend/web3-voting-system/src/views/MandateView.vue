@@ -12,20 +12,32 @@
 
   const getHost = async () => {
     host.value = await voteContract.methods.host().call();
+    console.log("host value is: ",host.value)
   };
 
   //mandate
   const mandating = async () => {
-    // const addr = eval(votersAddress.value);
+    const addr = eval(votersAddress.value);
+    console.log("address are: " ,typeof(addr));
     const account = await getAccounts();
     console.log(account);
     // voteContract.methods.mandate(addr).send({from: account}).on('receipt', () => {
     //   console.log("mandate succeed");
     // })
 
-    // await voteContract.connect(host).mandate(addr).on('receipt', () => {
+    // await voteContract.methods.mandate(addr).on('receipt', () => {
     //   console.log("mandating succeed");
     // });
+
+    voteContract.methods.mandate(addr).send({ from: host.value })
+      .then(function(receipt){
+      // This callback will be called once the transaction is confirmed
+        console.log(receipt);
+      }).catch(function(error){
+        console.error(error);
+      });
+
+
   }
 
   onMounted(async () => {

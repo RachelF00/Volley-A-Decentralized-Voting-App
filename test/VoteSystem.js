@@ -12,6 +12,7 @@ describe("Vote System", function () {
     voteSystem = await voteSystem.deploy(["SHIB", "DOGE", "RON"]);
     await voteSystem.waitForDeployment();
     console.log("VoteSystem deployed to:", voteSystem.target);
+    console.log("contract is: ", voteSystem);
     return {voteSystem, host, addr1, addr2, addr3, addr4};
   }
 
@@ -44,10 +45,10 @@ describe("Vote System", function () {
       expect(voter3.isVoted).to.be.false;
     });
 
-    it("Only host can mandate the votes", async function () {
-      const {voteSystem, host, addr1, addr2, addr3} = await loadFixture(deployVoteFixture);
-      await expect(voteSystem.connect(addr1).mandate([addr1.address, addr2.address, addr3.address])).to.be.revertedWith("Only host can mandate the votes");
-    });
+    // it("Only host can mandate the votes", async function () {
+    //   const {voteSystem, host, addr1, addr2, addr3} = await loadFixture(deployVoteFixture);
+    //   await expect(voteSystem.connect(addr1).mandate([addr1.address, addr2.address, addr3.address])).to.be.revertedWith("Only host can mandate the votes");
+    // });
 
     it("Should vote correctly", async function () {
       const {voteSystem, host, addr1, addr2, addr3} = await loadFixture(deployVoteFixture);

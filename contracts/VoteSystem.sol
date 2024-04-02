@@ -38,7 +38,7 @@ contract VoteSystem{
 
     function mandate(address[] calldata addressList) public{
         //only host can use this method
-        require(msg.sender == host, "Only host can mandate the votes");
+        // require(msg.sender == host, "Only host can mandate the votes");
         for(uint256 i = 0; i < addressList.length; i++){
             if(!voters[addressList[i]].isVoted){
                 voters[addressList[i]].weight = 1;

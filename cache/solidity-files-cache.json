@@ -2,8 +2,8 @@
   "_format": "hh-sol-cache-2",
   "files": {
     "/home/xiaofan/Spring2024/VoteSystem/contracts/VoteSystem.sol": {
-      "lastModificationDate": 1711781025131,
-      "contentHash": "606d4a5305fb6f227cb54f659c2c0ee5",
+      "lastModificationDate": 1712032587225,
+      "contentHash": "32082216fdd2689ac56fe69941c1da11",
       "sourceName": "contracts/VoteSystem.sol",
       "solcConfig": {
         "version": "0.8.24",
