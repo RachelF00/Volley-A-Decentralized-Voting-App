@@ -20,24 +20,11 @@
     const addr = eval(votersAddress.value);
     console.log("address are: " ,typeof(addr));
     const account = await getAccounts();
-    console.log(account);
-    voteContract.methods.mandate(addr).send({from: host.value}).on('receipt', () => {
-      console.log("mandate succeed");
-    })
-
-    // await voteContract.methods.mandate(addr).on('receipt', () => {
-    //   console.log("mandating succeed");
-    // });
-
-    // voteContract.methods.mandate(addr).send({ from: host.value })
-    //   .then(function(receipt){
-    //   // This callback will be called once the transaction is confirmed
-    //     console.log(receipt);
-    //   }).catch(function(error){
-    //     console.error(error);
-    //   });
-
-
+    console.log(account)
+    console.log("addr[0] is",addr[0]);
+    // console.log("weight before: ", voteContract.methods.getVoterWeight(addr[0]));
+    voteContract.methods.mandate(addr); 
+    // console.log("weight after: ", voteContract.methods.getVoterWeight(addr[0]));
   }
 
   onMounted(async () => {

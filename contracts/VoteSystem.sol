@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.9;
 
+import "hardhat/console.sol";
+
 contract VoteSystem{
 
     struct Voter{
@@ -42,8 +44,15 @@ contract VoteSystem{
         for(uint256 i = 0; i < addressList.length; i++){
             if(!voters[addressList[i]].isVoted){
                 voters[addressList[i]].weight = 1;
+                console.log("Weight After Mandating: ", voters[addressList[i]].weight);
             }
         }
+        
+    }
+
+    
+    function getVoterWeight(address voter) public view returns(uint256 weight){
+        return voters[voter].weight;
     }
 
     function vote(uint256 cryptoId) public{
