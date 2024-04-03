@@ -9,7 +9,7 @@ const active = ref(0);
       <main>
         <router-view></router-view>
       </main>
-      <van-tabbar v-model="active" active-color="rgb(185, 225, 243)" route="true">
+      <van-tabbar v-model="active" active-color="#A3D1DD" route="true">
         <van-tabbar-item to="/account" icon="user">My Account</van-tabbar-item>
         <van-tabbar-item to="/" icon="good-job">Voting</van-tabbar-item>
         <van-tabbar-item to="/board" icon="notes">Board</van-tabbar-item>
@@ -20,7 +20,7 @@ const active = ref(0);
 <style lang="less" scoped>
 .header {
   height: 50px;
-  background-color: rgb(185, 225, 243);
+  background-color: #A3D1DD;
   color: white;
   text-align: center;
   line-height: 50px;
