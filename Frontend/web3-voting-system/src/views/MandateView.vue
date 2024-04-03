@@ -21,14 +21,10 @@
     console.log("address are: " ,typeof(addr));
     const account = await getAccounts();
     console.log(account)
-    // console.log("addr[0] is",addr[0]);
-    // //const before = await voteContract.methods.getVoterFlag(addr[0]).call();
-    // const before = await voteContract.methods.inFunction().call();
-    // console.log("weight before: ", before);
+    console.log("addr[0] is",addr[0]);
+    // console.log("weight before: ", voteContract.methods.getVoterWeight(addr[0]));
     voteContract.methods.mandate(addr); 
-    // //const after = await voteContract.methods.getVoterFlag(addr[0]).call();
-    // const after = await voteContract.methods.inFunction().call();
-    // console.log("weight after: ", after);
+    // console.log("weight after: ", voteContract.methods.getVoterWeight(addr[0]));
   }
 
   onMounted(async () => {
@@ -45,7 +41,11 @@
 
 <template>
   <div class="block1">
-      <van-divider>Mandate Page</van-divider>
+    <van-divider
+  :style="{ color: '#888888', borderColor: '#888888'}"
+  >
+    Mandate Page
+    </van-divider>
       <div class="host">
           <p class="label"><van-icon name="manager"/>Host Address</p>
           <p class="address">{{host}}</p>
@@ -56,7 +56,6 @@
       </div>
       <div class="butn">
         <van-button block class="vote-butn" @click="mandating">Start Vote</van-button>
-
       </div>
   </div>
 </template>
