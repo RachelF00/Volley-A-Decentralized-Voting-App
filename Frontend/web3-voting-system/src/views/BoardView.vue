@@ -1,11 +1,11 @@
 <script setup>
-/*import useweb3 from "@/hooks/useweb3";
+import useweb3 from "@/hooks/useweb3";
 import { onMounted, ref } from "vue";
-const { web3, voteContract, getAccounts } = useweb3();
+const {voteContract, getAccounts } = useweb3();
 
 const board = ref([]);
 
-const account = ref("");
+// const account = ref("");
 
 const getBoardInfo = async () => {
   const result = await voteContract.methods.getBoardInfo().call();
@@ -21,7 +21,7 @@ const vote = async (index) => {
 onMounted(() => {
   getBoardInfo();
 })
-*/
+
 </script>
 
 <template>
@@ -31,22 +31,14 @@ onMounted(() => {
   >
     Board Summary
     </van-divider>
-    <!--
     <van-cell-group inset>
-      <van-cell :title="item.crypto" v-for="(item, index) in board">
-      <template #right-icon>
-        <van-button>{{ item.totalAmount }}</van-button>
-      </template>
+      <van-cell :title="item.crypto" v-for="item in board" :key="item.id">
+        <template #right-icon>
+          <van-button @click="vote">{{ item.totalAmount }}</van-button>
+        </template>
       </van-cell>
     </van-cell-group>
-    -->
-    <van-cell-group inset>
-      <van-cell size="large" title="Cell title" >
-      <template #right-icon>
-        <van-button>1</van-button>
-      </template>
-    </van-cell>
-    </van-cell-group>
+   
   </div>
 </template>
 

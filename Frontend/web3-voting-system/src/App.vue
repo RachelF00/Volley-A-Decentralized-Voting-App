@@ -18,22 +18,6 @@ const active = ref(0);
 </template>
 
 <style lang="less" scoped>
-.header {
-  height: 50px;
-  background-color: #A3D1DD;
-  color: white;
-  text-align: center;
-  line-height: 50px;
-  font-size: xx-large;
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-</style>
+@import url('https://fonts.googleapis.com/css?family=Poppins');
 
-<style lang="less">
-html, 
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-}
 </style>

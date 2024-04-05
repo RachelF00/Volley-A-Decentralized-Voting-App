@@ -1,19 +1,37 @@
 <script setup>
-/*import useWeb3 from "../hooks/useweb3.js";
+
+import useWeb3 from "../hooks/useweb3.js";
 import { ref, onMounted} from "vue";
-const { Web3, voteContract, getAccounts} = useWeb3();
+const {voteContract, getAccount} = useWeb3();
+
+const account = ref("");
+
+// 选民信息
 const voterInfo = ref({});
 
+// 受托人地址
+const delegatorAddress = ref("");
+
 const getVoteInfo = async () => {
-  const account = await getAccounts();
-  voterInfo.value = await voteContract.methods.voters(account).call();
+  account.value = await getAccount();
+  voterInfo.value = await voteContract.methods.voters(account.value).call();
+}
+
+const delegate = () => {
+  // console.log(delegatorAddress.value);
+  voteContract.methods
+    .delegate(delegatorAddress.value)
+    .send({ from: account.value })
+    .on('receipt', (event) => {
+      console.log("delegate success");
+    });
 }
 
 onMounted(async () => {
   await getVoteInfo();
   console.log("Voter Info is",voterInfo.value);
 });
-*/
+
 </script>
 
 <template>
@@ -25,29 +43,29 @@ onMounted(async () => {
     </van-divider>
     <div class="Adr">
       <p class="label">Address</p>
-      <p class="address">aa</p>
+      <p class="address">{{ account }}</p>
     </div>
     <div class="Quantity">
       <p class="label">Quantity</p>
-      <p class="address">1</p>
+      <p class="address">{{ voterInfo.weight }}</p>
     </div>
     <div class="Delegator">
       <p class="label">Delegator</p>
-      <textarea v-show="isVisible" class="delAddress"></textarea>
+      <textarea v-show="isVisible" class="delAddress" :style="{ fontStyle: 'italic' }" placeholder="Please type your delegator address 输入受托人地址" v-model="delegatorAddress"></textarea>
     </div>
     <div v-show="isVisible" class="butn">
-        <van-button size="small" block class="del-butn">Confirm</van-button>
+        <van-button size="small" block class="del-butn" @click="delegate">Delegate to vote</van-button>
     </div>
     <div class="Status">
       <p class="label">Status</p>
-      <p class="address">Voted or Not Voted</p>
+      <p class="address">{{ voterInfo.isVoted }}</p>
     </div>
     <div class="TargetID">
       <p class="label">Target ID</p>
-      <p class="address">02</p>
+      <p class="address">{{voterInfo.cryptoId }}</p>
     </div>
   </div>
-  <van-button size="mini" block class="toggle" @click="toggleVisibility">Adding Delegator</van-button>
+  <van-button block class="toggle" @click="toggleVisibility" :class="{ 'clicked': !isVisible, 'unclicked': isVisible }">Adding Delegator</van-button>
 </template>
 
 <script>
