@@ -1,8 +1,8 @@
 <script setup>
-
-import useWeb3 from "../hooks/useweb3.js";
+//import useWeb3 from "../hooks/useweb3.js";
 import { ref, onMounted} from "vue";
-const {voteContract, getAccount} = useWeb3();
+import {  voteContract, getAccount } from '../hooks/useweb3.js'; 
+//const {voteContract, getAccount} = useWeb3();
 
 const account = ref("");
 
@@ -51,13 +51,13 @@ onMounted(async () => {
     </div>
     <div class="Delegator">
       <p class="label">Delegator</p>
-      <textarea v-show="isVisible" class="delAddress" :style="{ fontStyle: 'italic' }" placeholder="Please type your delegator address 输入受托人地址" v-model="delegatorAddress"></textarea>
+      <textarea v-show="isVisible" class="delAddress" :style="{ fontStyle: 'italic' }" placeholder="Please type your delegator address" v-model="delegatorAddress"></textarea>
     </div>
     <div v-show="isVisible" class="butn">
         <van-button size="small" block class="del-butn" @click="delegate">Delegate to vote</van-button>
     </div>
     <div class="Status">
-      <p class="label">Status</p>
+      <p class="label">Voted</p>
       <p class="address">{{ voterInfo.isVoted }}</p>
     </div>
     <div class="TargetID">
@@ -72,7 +72,7 @@ onMounted(async () => {
 export default {
   data() {
     return {
-      isVisible: false, // Control the visibility of the textarea and confirm button
+      isVisible: true, // Control the visibility of the textarea and confirm button
     };
   },
   methods: {
@@ -84,4 +84,4 @@ export default {
 </script>
 
 <style lang="less">
-</style>
+</style> 

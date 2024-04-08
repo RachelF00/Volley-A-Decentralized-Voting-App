@@ -1,7 +1,8 @@
 <script setup>
-import useweb3 from "@/hooks/useweb3";
-import { onMounted, ref } from "vue";
-const {voteContract, getAccounts } = useweb3();
+//import useweb3 from "@/hooks/useweb3";
+import { voteContract,getAccount } from '../hooks/useweb3.js';
+import { ref, onMounted } from "vue";
+//const {voteContract, getAccounts } = useweb3();
 
 const board = ref([]);
 
@@ -12,15 +13,33 @@ const getBoardInfo = async () => {
   board.value = result;
 };
 
+onMounted(() => {
+  initEventListen();
+  getBoardInfo();
+})
+
 const vote = async (index) => {
-  const account = await getAccounts();
+  const account = await getAccount();
   const result = await voteContract.methods.vote(index).send({ from: account });
   console.log(result);
 }
 
-onMounted(() => {
-  getBoardInfo();
-})
+const initEventListen = ( )=>{
+  voteContract.events.voteSuccess({fromBlock:0},(err,event)=>{
+    console.log("Event Listening");
+    console.log(event)
+  })
+  .on("data",(event)=>{
+    console.log("Event triggered by smart contract: ",event.returnValues );
+
+  })
+
+
+}
+
+// onMounted(() => {
+//   getBoardInfo();
+// })
 
 </script>
 
@@ -32,9 +51,9 @@ onMounted(() => {
     Board Summary
     </van-divider>
     <van-cell-group inset>
-      <van-cell :title="item.crypto" v-for="item in board" :key="item.id">
+      <van-cell :title="item.crypto" v-for="(item,index) in board" :key="item.id">
         <template #right-icon>
-          <van-button @click="vote">{{ item.totalAmount }}</van-button>
+          <van-button @click="vote(index)">{{ item.totalAmount }}</van-button>
         </template>
       </van-cell>
     </van-cell-group>
