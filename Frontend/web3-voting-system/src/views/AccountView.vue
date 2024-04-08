@@ -54,7 +54,7 @@ onMounted(async () => {
       <textarea v-show="isVisible" class="delAddress" :style="{ fontStyle: 'italic' }" placeholder="Please type your delegator address" v-model="delegatorAddress"></textarea>
     </div>
     <div v-show="isVisible" class="butn">
-        <van-button size="small" block class="del-butn" @click="delegate">Delegate to vote</van-button>
+        <van-button size="small" block class="del-butn" @click="delegate">Confirm</van-button>
     </div>
     <div class="Status">
       <p class="label">Voted</p>
