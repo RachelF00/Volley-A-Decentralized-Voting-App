@@ -8,3 +8,7 @@ Techniques: Vue, Web3, Smart Contract (Solidity), Ethereum Blockchain, Full-stac
 
 
 ![alt text](/system-architecture.png)
+
+![alt text](/frontend design.png)
+
+
