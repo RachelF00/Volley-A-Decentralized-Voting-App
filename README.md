@@ -4,7 +4,7 @@ Volley is a decentralized application based on Ethernet blockchain. It offers a 
 
 
 
-Techniques: Vue, Web3, Smart Contract (Solidaty), Ethereum Blockchain, Full-stack development
+Techniques: Vue, Web3, Smart Contract (Solidity), Ethereum Blockchain, Full-stack development
 
 
 ![alt text](/system-architecture.png)
